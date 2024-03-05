@@ -34,7 +34,7 @@ Bulkrax.setup do |config|
     'date' => { from: ['date'], split: /\s*[;]\s*/ },
     'description' => { from: ['description'] },
     'format_digital' => { from: ['format'], parsed: true, split: /\s*[;]\s*/ },
-    'identifier' => { from: ['identifier'], if: ['match?', /http(s{0,1}):\/\//], source_identifier: true },
+    'identifier' => { from: ['identifier'], if: ['match?', /http(s{0,1}):\/\//], source_identifier: true, search_field: 'identifier_tesim' },
     'language' => { from: ['language'], split: /\s*[;]\s*/, parsed: true },
     'place'=>{:from=>['coverage'], split: /\s*[;]\s*/ },
     'publisher' => { from: ['publisher'], split: /\s*[;]\s*/ },

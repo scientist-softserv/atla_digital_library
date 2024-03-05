@@ -18,7 +18,15 @@ module Bulkrax
     end
 
     def factory
-      @factory ||= Bulkrax::ObjectFactory.new(parsed_metadata, identifier, false, user, factory_class)
+      @factory ||= Bulkrax::ObjectFactory.new(attributes: self.parsed_metadata,
+        source_identifier_value: identifier,
+        work_identifier: parser.work_identifier,
+        work_identifier_search_field: parser.work_identifier_search_field,
+        related_parents_parsed_mapping: parser.related_parents_parsed_mapping,
+        user: user,
+        klass: factory_class,
+        importer_run_id: importerexporter.last_run.id,
+        )
     end
 
     def factory_class
@@ -50,8 +58,7 @@ module Bulkrax
 
       if raw_metadata_xml["ComponentFileName"].present?
         parsed_metadata['file'] =
-          [File.join(files_path,
-raw_metadata_xml["ComponentFileName"].downcase)]
+          [File.join(files_path, raw_metadata_xml["ComponentFileName"].downcase)]
       end
       parsed_metadata[work_identifier] ||= [self.identifier]
       parsed_metadata['has_manifest'] = "1"

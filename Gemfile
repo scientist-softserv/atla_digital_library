@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
-ruby '2.5.3'
 
-gem 'rails', '5.1.6'
+gem 'rails', '~> 5.2'
 
 gem 'activejob-scheduler', git: 'https://github.com/notch8/activejob-scheduler.git'
 gem 'blacklight_range_limit'
-# TODO: do a new release and use the versioned version of bulkrax when the upgrade work is complete
-gem 'bulkrax', git: 'https://github.com/samvera-labs/bulkrax.git', branch: 'v4.4-patch'
-# gem 'bulkrax', '~> 4.4.0'
+gem 'bootsnap'
+gem 'bulkrax', git: 'https://github.com/samvera/bulkrax.git', branch: 'oai-fixes'
+# gem 'bulkrax', path: 'vendor/engines/bulkrax'
 gem 'activerecord-nulldb-adapter'
 gem 'bixby', group: %i[development test]
 gem 'byebug', group: %i[development test]
@@ -23,10 +22,11 @@ gem 'factory_bot_rails', group: %i[development test]
 gem 'fcrepo_wrapper', group: %i[development test]
 gem 'final_redirect_url'
 gem 'flutie'
+gem 'marcel'
 gem 'oai', git: 'https://github.com/notch8/ruby-oai.git', branch: 'quote-marks'
 gem 'health-monitor-rails', git: 'https://github.com/notch8/health-monitor-rails.git'
 # , git: 'https://github.com/orangewolf/hyrax.git', branch: 'collection_path_js_fix_2.5.1'
-gem 'hyrax', '~> 2.6'
+gem 'hyrax', '~> 2.9.6'
 gem 'hyrax-iiif_av', git: 'https://github.com/samvera-labs/hyrax-iiif_av.git', branch: 'uv_meet_av'
 # remove if iiif 0.6 is supported or if upgraded to hyrax 3
 gem 'iiif_manifest', git: 'https://github.com/samvera-labs/iiif_manifest.git', ref: '4219eb57ae9fbcd178391f401928040ebe057529'
@@ -45,6 +45,9 @@ gem 'pronto-rails_schema', require: false
 gem 'pronto-rubocop', require: false
 gem 'pry-byebug', group: %i[development test]
 gem 'puma', '~> 3.7'
+gem 'redis', '~> 4.0'
+gem 'redis-namespace', '~> 1.5'
+gem 'redlock', '~> 1.0'
 gem 'riiif', '~> 1.1'
 gem 'rinku'
 gem 'rsolr', '~> 2.2'

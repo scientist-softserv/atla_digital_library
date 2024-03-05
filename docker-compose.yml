@@ -60,6 +60,8 @@ services:
         condition: service_started
       initialize_app:
         condition: service_completed_successfully
+    ports:
+      - '3000'
 
   redis:
     image: redis:3
@@ -114,7 +116,7 @@ services:
     entrypoint: ["sh", "-c"]
     command:
       - >
-        bundle && db-migrate-seed.sh
+        bundle && rails db:migrate &&  db-migrate-seed.sh
     depends_on:
       postgres:
         condition: service_started
